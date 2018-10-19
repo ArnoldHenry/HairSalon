@@ -54,7 +54,7 @@ public class Salon {
             String password = request.queryParams("passw");
             byte[] pass = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             hairdp.setPassword(Arrays.toString(pass));
-            hb.save(hairdp);
+//            hb.save(hairdp);
 
             String confirmadmin = HairSalonDB.adminval(hairdp);
 
