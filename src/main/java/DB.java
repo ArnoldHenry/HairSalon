@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public class DB {
     private static URI dbUri;
     public static Sql2o sql2oHair;
+    public static Sql2o sql2o;
 
     static Logger logger = LoggerFactory.getLogger(DB.class);
 
