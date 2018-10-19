@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HairSalonTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-18T15:45:12" hostname="Black" time="0.453">
-  <properties/>
-  <testcase name="save_returnifupdatedata_true" classname="HairSalonTest" time="0.31"/>
-  <testcase name="save_returnifdatasame_true" classname="HairSalonTest" time="0.053"/>
-  <testcase name="equals_returntrueifusernameandpassword_true" classname="HairSalonTest" time="0.087"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

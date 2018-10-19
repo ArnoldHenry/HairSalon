@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/hairsalon.css" type="text/css">
+<div class="container forms">
+<div class="row" style="padding:1%;">
+<div class="col-sm-6">
+     <a href="/" class="btn btn-primary">Logout</a>
+</div>
+<div class="col-sm-6">
+ <a href="/backhome" class="btn btn-primary">Home</a>
+</div>
+</div>
+
+ <div class="row">
+ <div class="col-md-6">
+ <form action="/updatestylist" method="post">
+     <h2>Update Stylist</h2>
+     <div class="form-group">
+         <input name="stylistid" style="width:100%;" class="form-control" type="text" id="stylistid" placeholder="Enter Stylist ID" required/>
+     </div>
+         <div class="form-group">
+             <input name="mobile" style="width:100%;" class="form-control" type="number" id="mobile" placeholder="Enter Mobile Number" required/>
+          </div>
+         <div class="form-group">
+             <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address" required/>
+         </div>
+           <div class="form-group">
+              <input name="password" style="width:100%;" class="form-control" type="password" id="password" placeholder="Enter Passsword" required/>
+           </div>
+     <div class="form-group">
+         <button type="submit" name="submit" class="btn btn-success">Update Stylist</button>
+     </div>
+ </form>
+ </div>
+
+ <div class="col-md-6">
+ <form action="/updatecustomer" method="post">
+     <h2>Update Customer</h2>
+     <div class="form-group">
+         <input name="clientid" style="width:100%;" class="form-control" type="text" id="clientid" placeholder="Enter Client ID" required/>
+     </div>
+         <div class="form-group">
+             <input name="mobile" style="width:100%;" class="form-control" type="number" id="mobile" placeholder="Enter Mobile Number" required/>
+          </div>
+         <div class="form-group">
+             <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address" required/>
+         </div>
+          <div class="form-group">
+           <label for="sel1">Select Stylist</label>
+           <select class="form-control" name="stylistid" id="stylistid" required>
+             <option value="">Select Stylist</option>
+            #foreach ($styl in $stylists)
+            <option value="$styl.getStylistid()">$styl.getFname()&nbsp$styl.getSname() </td>
+            #end
+           </select>
+            </div>
+         <div class="form-group">
+                 <button type="submit" name="submit" class="btn btn-success">Update Customer</button>
+         </div>
+ </form>
+ </div>
+ </div>
+ <div>
+ </div>

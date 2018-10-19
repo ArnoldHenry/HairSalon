@@ -29,12 +29,6 @@ public class Salon {
         HairSalonDP hairdp = new HairSalonDP();
         HairSalonDB hb = new HairSalonDB();
 
-        get("/back",(request,response)->{
-            Map<String,Object> model = new HashMap<String,Object>();
-            model.put("template","/templates/stylistregform.vtl");
-            return new ModelAndView(model,layout);
-        },new VelocityTemplateEngine());
-
         get("/backhome",(request,response)->{
             Map<String,Object> model = new HashMap<String,Object>();
             model.put("template","/templates/stylistregform.vtl");
@@ -151,6 +145,75 @@ public class Salon {
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
 
+        //go to update page
+
+        get("/update",(request,response)->{
+            Map<String,Object> model = new HashMap<String,Object>();
+            model.put("template","/templates/updatefile.vtl");
+            model.put("stylists",HairSalonDB.allstylist());
+            try{
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
+
+        //update stylist
+        post("/updatestylist",(request,response)->{
+            Map<String,Object> model = new HashMap<String,Object>();
+            model.put("stylists",HairSalonDB.allstylist());
+            String stylistid = request.queryParams("stylistid");
+            hairdp.setStylistid(stylistid);
+            Integer mobile = Integer.parseInt (request.queryParams("mobile"));
+            hairdp.setMobile(mobile);
+            String email = request.queryParams("email");
+            hairdp.setEmail(email);
+            String password = request.queryParams("password");
+            byte[] pass = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            hairdp.setPassword(Arrays.toString(pass));
+            String df = HairSalonDB.select(hairdp);
+            try{
+                if (df == null) {
+                    hb.updatestylist(hairdp);
+                }else{
+                    model.put("template","/templates/notexist.vtl");
+                }
+
+                response.redirect("/update");
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
+
+        //update customer
+        post("/updatecustomer",(request,response)->{
+            Map<String,Object> model = new HashMap<String,Object>();
+            model.put("stylists",HairSalonDB.allstylist());
+            Integer mobile = Integer.parseInt (request.queryParams("mobile"));
+            hairdp.setMobile(mobile);
+            String email = request.queryParams("email");
+            hairdp.setEmail(email);
+            String clientid = request.queryParams("clientid");
+            hairdp.setCustomerid(clientid);
+            String stylistid = request.queryParams("stylistid");
+            hairdp.setStylistid(stylistid);
+            String df = HairSalonDB.selectcustomer(hairdp);
+            try{
+                if (df == null) {
+                    hb.updateclient(hairdp);
+                }else{
+                    model.put("template","/templates/notexist.vtl");
+                }
+
+
+                response.redirect("/update");
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
+
 //view stylist customers
 
         get("/stylistcustomers",(request,response)->{
@@ -176,7 +239,7 @@ public class Salon {
                     hb.delcustomer(hairdp);
                     response.redirect("/backhome");
                 } else{
-                    model.put("template","/templates/caution.vtl");
+                    model.put("template","/templates/delnot.vtl");
                     System.out.println(HairSalonDB.select(hairdp));
                 }
 
@@ -200,7 +263,7 @@ public class Salon {
                  hb.delstylist(hairdp);
                     response.redirect("/backhome");
                 } else{
-                    model.put("template","/templates/caution.vtl");
+                    model.put("template","/templates/delnot.vtl");
                     System.out.println(HairSalonDB.select(hairdp));
                 }
 

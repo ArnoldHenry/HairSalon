@@ -84,7 +84,7 @@ public class HairSalonDB {
             return idstylist;
         }
     }
-    //confirm stylist id
+    //confirm customer id
     public static String selectcustomer(HairSalonDP idcheck) {
         try(Connection con = DB.sql2oHair.open()) {
             String sql = "SELECT customer FROM customer WHERE customerid=:customerid";
@@ -183,31 +183,25 @@ public class HairSalonDB {
         }
     }
 
-    public void updatestylist(String fname,String sname,String lname,String mobile,String gender,String email){
+    public void updatestylist(HairSalonDP upstyle){
         try(Connection connection = DB.sql2oHair.open()){
-            String sql = "UPDATE stylist SET( fname,sname,lname,mobile,gender,email ) = (:fname,:sname,:lname,:mobile,:gender,:email) WHERE id=:id;";
+            String sql = "UPDATE stylist SET(stylistid,mobile,email,password ) = (:stylistid,:mobile,:email,:password) WHERE stylistid=:stylistid;";
             connection.createQuery(sql)
-                    .addParameter("fname",fname)
-                    .addParameter("sname",sname)
-                    .addParameter("lname",lname)
-                    .addParameter("mobile",mobile)
-                    .addParameter("gender",gender)
-                    .addParameter("email",email)
-                    .addParameter("id",id)
+                    .addParameter("stylistid",upstyle.getStylistid())
+                    .addParameter("mobile",upstyle.getMobile())
+                    .addParameter("email",upstyle.getEmail())
+                    .addParameter("password",upstyle.getPassword())
                     .executeUpdate();
         }
     }
-    public void updateclient(String fname,String sname,String lname,String mobile,String gender,String email){
+    public void updateclient(HairSalonDP customerstyle){
         try(Connection connection = DB.sql2oHair.open()){
-            String sql = "UPDATE stylist SET( fname,sname,lname,mobile,gender,email ) = (:fname,:sname,:lname,:mobile,:gender,:email) WHERE id=:id;";
+            String sql = "UPDATE customer SET(mobile,email,customerid,stylistid ) = (:mobile,:email,:customerid,:stylistid) WHERE customerid=:customerid;";
             connection.createQuery(sql)
-                    .addParameter("fname",fname)
-                    .addParameter("sname",sname)
-                    .addParameter("lname",lname)
-                    .addParameter("mobile",mobile)
-                    .addParameter("gender",gender)
-                    .addParameter("email",email)
-                    .addParameter("id",id)
+                    .addParameter("mobile",customerstyle.getMobile())
+                    .addParameter("email",customerstyle.getEmail())
+                    .addParameter("customerid",customerstyle.getCustomerid())
+                    .addParameter("stylistid",customerstyle.getStylistid())
                     .executeUpdate();
         }
     }
