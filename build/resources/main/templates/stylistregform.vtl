@@ -2,12 +2,13 @@
 <div class="container forms">
 <div class="row" style="padding:1%;">
 <div class="col-sm-6">
-     <a href="/" class="btn btn-primary">Back Stylists</a>
+     <a href="/" class="btn btn-primary">Logout</a>
 </div>
 <br/>
 <div class="col-sm-6">
  <a href="/viewstylist" class="btn btn-primary">View Stylists</a>
   <a href="/viewcustomers" class="btn btn-primary">View Customers</a>
+   <a href="/update" class="btn btn-primary">Update</a>
 </div>
 </div>
 
@@ -16,25 +17,28 @@
 <form action="/stylistform" method="post">
     <h2>Stylist SignUp Form</h2>
     <div class="form-group">
-        <input name="stylistid" style="width:100%;" class="form-control" type="text" id="stylistid" placeholder="Enter Stylist ID"/>
+        <input name="stylistid" style="width:100%;" class="form-control" type="text" id="stylistid" placeholder="Enter Stylist ID" required/>
     </div>
     <div class="form-group">
-        <input name="fname" style="width:100%;" class="form-control" type="text" id="fname" placeholder="Enter First Name"/>
+        <input name="fname" style="width:100%;" class="form-control" type="text" id="fname" placeholder="Enter First Name" required/>
     </div>
         <div class="form-group">
-            <input name="sname" style="width:100%;" class="form-control" type="text" id="sname" placeholder="Enter Second Name"/>
+            <input name="sname" style="width:100%;" class="form-control" type="text" id="sname" placeholder="Enter Second Name" required/>
         </div>
         <div class="form-group">
-            <input name="lname" style="width:100%;" class="form-control" type="text" id="lname" placeholder="Enter Last Name"/>
+            <input name="lname" style="width:100%;" class="form-control" type="text" id="lname" placeholder="Enter Last Name" required/>
         </div>
         <div class="form-group">
-            <input name="mobile" style="width:100%;" class="form-control" type="number" id="mobile" placeholder="Enter Mobile Number"/>
+            <input name="mobile" style="width:100%;" class="form-control" type="number" id="mobile" placeholder="Enter Mobile Number" required/>
          </div>
         <input type="radio" name="gender" value="male" checked> Male<br>
         <input type="radio" name="gender" value="female"> Female<br>
         <div class="form-group">
-            <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address"/>
+            <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address" required/>
         </div>
+          <div class="form-group">
+             <input name="password" style="width:100%;" class="form-control" type="password" id="password" placeholder="Enter Passsword" required/>
+          </div>
     <div class="form-group">
         <button type="submit" name="submit" class="btn btn-success">Register Stylist</button>
     </div>
@@ -64,18 +68,16 @@
         <div class="form-group">
             <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address"/>
         </div>
-            <div class="form-group">
-                <input name="stylistid" style="width:100%;" class="form-control" type="text" id="stylistid" placeholder="Enter Stylist ID"/>
-            </div>
          <div class="form-group">
           <label for="sel1">Select Stylist</label>
-          <select class="form-control" name="customerid" id="customerid" id="sel1">
+          <select class="form-control" name="stylistid" id="stylistid">
             <option value="">Select Stylist</option>
            #foreach ($styl in $stylists)
            <option value="$styl.getStylistid()">$styl.getFname()&nbsp$styl.getSname() </td>
            #end
           </select>
            </div>
+
         <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-success">Register Customer</button>
         </div>
@@ -96,6 +98,7 @@
                         </div>
                     </form>
             </div>
+
             <h2>Delete Customer</h2>
                     <div class="col-sm-6">
                             <form method="post" action="/delcustomer">
@@ -110,31 +113,4 @@
                     </div>
         </div>
 <div>
-     <div class="col-sm-6">
-     <div class="col-sm-6">
-                 <h2>Update Stylist</h2>
-                         <form method="post" action="/upstylist">
-                             <div class="form-group">
-                                 <input type="text" name="upstylist" placeholder="Enter Stylist ID" id="upstylist" class="form-control" required>
-                             </div>
-                             <br>
-                             <div class="form-group">
-                                <button type="submit" name="submit" class="btn btn-primary" required>Update Stylist</button>
-                             </div>
-                         </form>
-                 </div>
-                 <h2>Update Customer</h2>
-                         <div class="col-sm-6">
-                                 <form method="post" action="/upcustomer">
-                                     <div class="form-group">
-                                         <input type="text" name="upcustomer" placeholder="Enter placeholder="Enter customer ID" ID" id="upcustomer" class="form-control" required>
-                                     </div>
-                                     <br>
-                                     <div class="form-group">
-                                        <button type="submit" name="submit" class="btn btn-primary" required>Update Customer</button>
-                                     </div>
-                                 </form>
-                         </div>
-     </div>
-        </div>
 </div>
