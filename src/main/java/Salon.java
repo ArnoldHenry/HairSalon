@@ -54,19 +54,19 @@ public class Salon {
             String password = request.queryParams("passw");
             byte[] pass = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             hairdp.setPassword(Arrays.toString(pass));
-            hb.save(hairdp);
+//            hb.save(hairdp);
 
             String confirmadmin = HairSalonDB.adminval(hairdp);
 
             String confirmstylist = HairSalonDB.stylistval(hairdp);
-//            if (confirmadmin != null){
+            if (confirmadmin != null){
                 model.put("template","/templates/stylistregform.vtl");
-//            }else if(confirmstylist != null){
-//                model.put("stylstcust", HairSalonDB.stylistcustomers(hairdp));
-//                model.put("template","/templates/stylistpage.vtl");
-//            }else{
-//                model.put("template","/templates/caution.vtl");
-//            }
+            }else if(confirmstylist != null){
+                model.put("stylstcust", HairSalonDB.stylistcustomers(hairdp));
+                model.put("template","/templates/stylistpage.vtl");
+            }else{
+                model.put("template","/templates/caution.vtl");
+            }
             model.put("stylists", HairSalonDB.allstylist());
             return new ModelAndView(model,layout);
         }),new VelocityTemplateEngine());
