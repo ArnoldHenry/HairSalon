@@ -59,14 +59,14 @@ public class Salon {
             String confirmadmin = HairSalonDB.adminval(hairdp);
 
             String confirmstylist = HairSalonDB.stylistval(hairdp);
-            if (confirmadmin != null){
+//            if (confirmadmin != null){
                 model.put("template","/templates/stylistregform.vtl");
-            }else if(confirmstylist != null){
-                model.put("stylstcust", HairSalonDB.stylistcustomers(hairdp));
-                model.put("template","/templates/stylistpage.vtl");
-            }else{
-                model.put("template","/templates/caution.vtl");
-            }
+//            }else if(confirmstylist != null){
+//                model.put("stylstcust", HairSalonDB.stylistcustomers(hairdp));
+//                model.put("template","/templates/stylistpage.vtl");
+//            }else{
+//                model.put("template","/templates/caution.vtl");
+//            }
             model.put("stylists", HairSalonDB.allstylist());
             return new ModelAndView(model,layout);
         }),new VelocityTemplateEngine());
