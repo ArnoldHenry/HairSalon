@@ -51,7 +51,7 @@ public class Salon {
             byte[] pass = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             hairdp.setPassword(Arrays.toString(pass));
 //            hb.save(hairdp);
-            String confirm = hb.adminval(hairdp);
+            String confirm = HairSalonDB.adminval(hairdp);
             if (confirm != null){
                 model.put("template","/templates/stylistregform.vtl");
             }else{
@@ -73,7 +73,7 @@ public class Salon {
             hairdp.setSname(sname);
             String lname = request.queryParams("lname");
             hairdp.setLname(lname);
-            int mobile = Integer.parseInt(request.queryParams("mobile"));
+            Integer mobile = Integer.parseInt (request.queryParams("mobile"));
             hairdp.setMobile(mobile);
             String gender = request.queryParams("gender");
             hairdp.setGender(gender);
@@ -94,7 +94,7 @@ public class Salon {
             hairdp.setSname(sname);
             String lname = request.queryParams("lname");
             hairdp.setLname(lname);
-            int mobile = Integer.parseInt(request.queryParams("mobile"));
+            Integer mobile = Integer.parseInt (request.queryParams("mobile"));
             hairdp.setMobile(mobile);
             String gender = request.queryParams("gender");
             hairdp.setGender(gender);
@@ -133,6 +133,51 @@ public class Salon {
         }, new VelocityTemplateEngine());
 
 
+        post("/delcustomer",(request,response)->{
+            Map<String,Object> model = new HashMap<String,Object>();
+            try{
+                String customerid = request.queryParams("delcustomer");
+                hairdp.setCustomerid(customerid);
+                String df = HairSalonDB.selectcustomer(hairdp);
+                if ( df != null) {
+                    hb.delcustomer(hairdp);
+                    model.put("template","/templates/stylistregform.vtl");
+                } else{
+                    model.put("template","/templates/caution.vtl");
+                    System.out.println(HairSalonDB.select(hairdp));
+                }
+
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+
+
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
+
+
+
+        post("/delstylist",(request,response)->{
+            Map<String,Object> model = new HashMap<String,Object>();
+            try{
+                String stylistid = request.queryParams("delstylist");
+                hairdp.setStylistid(stylistid);
+                String df = HairSalonDB.select(hairdp);
+                if ( df != null) {
+                 hb.delstylist(hairdp);
+                 model.put("template","/templates/stylistregform.vtl");
+                } else{
+                    model.put("template","/templates/caution.vtl");
+                    System.out.println(HairSalonDB.select(hairdp));
+                }
+
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+
+
+            return new ModelAndView(model,layout);
+        }, new VelocityTemplateEngine());
     }
     }
 

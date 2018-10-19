@@ -4,39 +4,32 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class HairSalonTest {
-@Before
-    public void setUp(){
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test","arnold","/arnold/");
-}
 //testing fetch
 @Test
     public void equals_returntrueifusernameandpassword_true(){
-    DataProperties oldname = new DataProperties("arnold1234","Luke","Lane","Me",754896532,"Male","arnold@gmail.com");
+    DataProperties oldname = new DataProperties("Luke","Lane","lname","744568921","male","arnold@gmail.com");
     oldname.save();
-    DataProperties newname = new DataProperties("arnold1234","Luke","Lane","Me",754896532,"Male","arnold@gmail.com");
+    DataProperties newname = new DataProperties("Luke","Lane","lname","744568921","male","arnold@gmail.com");
     newname.save();
     assertEquals(DataProperties.all().get(0),DataProperties.all().get(1));
 }
 //testing save
 @Test
     public void save_returnifdatasame_true(){
-    DataProperties dataProperties = new DataProperties("arnold1234","Arnold","Luke","Me",754896532,"Male","arnold@gmail.com");
+    DataProperties dataProperties = new DataProperties("Luke","Lane","lname","744568921","male","arnold@gmail.com");
     dataProperties.save();
     assertTrue(DataProperties.all().get(0).equals(dataProperties));
 }
 //testing update
 @Test
 public void save_returnifupdatedata_true(){
-    DataProperties dataProperties = new DataProperties("Arnold","Lane","Me","Male",754896532,"arnold@gmail.com","arnold1234");
+    DataProperties dataProperties = new DataProperties("Luke","Lane","lname","744568921","male","arnold@gmail.com");
     dataProperties.save();
-    DataProperties dp = new DataProperties("Arnold","Lane","Me","Male",754896532,"arnold@gmail.com","arnold1234");
-    dataProperties.save();
-    assertFalse(DataProperties.all().get(0).equals(dataProperties));
+    dataProperties.update("LA","LO","df","456","female","arnod@gmail.com");
+    assertEquals(DataProperties.all().get(0), dataProperties);
 }
 //testing delete
 

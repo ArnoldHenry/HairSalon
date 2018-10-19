@@ -4,6 +4,47 @@ import java.util.List;
 
 public class HairSalonDB {
     HairSalonDP hdp = new HairSalonDP();
+    private String fname,sname,lname,gender,email,mobile;
+    private int  id ;
+//
+//    public HairSalonDB( String fname, String sname, String lname,String mobile, String gender, String email) {
+//        this.fname = fname;
+//        this.sname = sname;
+//        this.lname = lname;
+//        this.gender = gender;
+//        this.email = email;
+//        this.mobile= mobile;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public String getFname() {
+//        return fname;
+//    }
+//
+//    public String getLname() {
+//        return lname;
+//    }
+//
+//    public String getSname() {
+//        return sname;
+//    }
+//
+//    public String getMobile() {
+//        return mobile;
+//    }
+//
+//    public String getGender() {
+//        return gender;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+
 
     public static List<HairSalonDP> all(){
         String sql = "SELECT stylistid, fname, sname, lname, mobile, gender, email FROM stylist";
@@ -24,7 +65,26 @@ public class HairSalonDB {
             return con.createQuery(sql).executeAndFetch(HairSalonDP.class);
         }
     }
-
+    //confirm stylist id
+    public static String select(HairSalonDP idcheck) {
+        try(Connection con = DB.sql2oHair.open()) {
+            String sql = "SELECT stylistid FROM stylist WHERE stylistid=:stylistid";
+            String idstylist = con.createQuery(sql)
+                    .addParameter("stylistid",idcheck.getStylistid())
+                    .executeScalar(String.class);
+            return idstylist;
+        }
+    }
+    //confirm stylist id
+    public static String selectcustomer(HairSalonDP idcheck) {
+        try(Connection con = DB.sql2oHair.open()) {
+            String sql = "SELECT customer FROM customer WHERE customerid=:customerid";
+            String idcustomer = con.createQuery(sql)
+                    .addParameter("customerid",idcheck.getCustomerid())
+                    .executeScalar(String.class);
+            return idcustomer;
+        }
+    }
 //validate admin login
     public static String adminval(HairSalonDP admincheck) {
         try(Connection con = DB.sql2oHair.open()) {
@@ -83,28 +143,66 @@ public class HairSalonDB {
         }
     }
 
-    public static HairSalonDB find(String username){
+    public void delstylist(HairSalonDP stylistid){
         try(Connection connection = DB.sql2oHair.open()){
-            String sql = "SELECT username FROM admin WHERE username=:username";
-            HairSalonDB db = connection.createQuery(sql)
-                    .addParameter("username",username)
-                    .executeAndFetchFirst(HairSalonDB.class);
-            return db;
+            String sql = "DELETE FROM stylist WHERE stylistid=:stylistid";
+            connection.createQuery(sql)
+                    .addParameter("stylistid",stylistid.getStylistid())
+                    .executeUpdate();
+
         }
     }
-    public void update(String update){
+
+    public void delcustomer(HairSalonDP customerid){
         try(Connection connection = DB.sql2oHair.open()){
-            String sql = "UPDATE fname,sname,lname,mobile,gender,email FROM stylist WHERE fname=:fname";
+            String sql = "DELETE FROM customer WHERE customerid=:customerid";
             connection.createQuery(sql)
-                    .addParameter("fname",hdp.getFname())
-                    .addParameter("sname",hdp.getSname())
-                    .addParameter("lname",hdp.getLname())
-                    .addParameter("mobile",hdp.getMobile())
-                    .addParameter("gender",hdp.getGender())
-                    .addParameter("email",hdp.getEmail())
+                    .addParameter("customerid",customerid.getCustomerid())
                     .executeUpdate();
         }
     }
 
+    public void updatestylist(String fname,String sname,String lname,String mobile,String gender,String email){
+        try(Connection connection = DB.sql2oHair.open()){
+            String sql = "UPDATE stylist SET( fname,sname,lname,mobile,gender,email ) = (:fname,:sname,:lname,:mobile,:gender,:email) WHERE id=:id;";
+            connection.createQuery(sql)
+                    .addParameter("fname",fname)
+                    .addParameter("sname",sname)
+                    .addParameter("lname",lname)
+                    .addParameter("mobile",mobile)
+                    .addParameter("gender",gender)
+                    .addParameter("email",email)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        }
+    }
+    public void updateclient(String fname,String sname,String lname,String mobile,String gender,String email){
+        try(Connection connection = DB.sql2oHair.open()){
+            String sql = "UPDATE stylist SET( fname,sname,lname,mobile,gender,email ) = (:fname,:sname,:lname,:mobile,:gender,:email) WHERE id=:id;";
+            connection.createQuery(sql)
+                    .addParameter("fname",fname)
+                    .addParameter("sname",sname)
+                    .addParameter("lname",lname)
+                    .addParameter("mobile",mobile)
+                    .addParameter("gender",gender)
+                    .addParameter("email",email)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        }
+    }
+    @Override
+    public boolean equals(Object otheruname){
+        if (!(otheruname instanceof HairSalonDP)){
+            return false;
+        }else{
+            HairSalonDP dp = (HairSalonDP) otheruname;
+            return dp.getFname().equals(otheruname)&&
+                    dp.getSname().equals(otheruname)&&
+                    dp.getLname().equals(otheruname)&&
+                    dp.getMobile().equals(otheruname)&&
+                    dp.getGender().equals(otheruname)&&
+                    dp.getEmail().equals(otheruname);
+        }
+    }
 
 }

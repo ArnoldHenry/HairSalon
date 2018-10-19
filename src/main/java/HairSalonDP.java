@@ -66,7 +66,7 @@ public class HairSalonDP {
         return gender;
     }
 
-    public int getMobile() {
+    public Integer getMobile() {
         return mobile;
     }
 
@@ -94,7 +94,7 @@ public class HairSalonDP {
         this.lname = lname;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(Integer mobile) {
         this.mobile = mobile;
     }
 
