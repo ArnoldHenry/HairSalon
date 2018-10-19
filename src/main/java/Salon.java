@@ -95,32 +95,34 @@ public class Salon {
 
             hb.savestylist(hairdp);
             response.redirect("/backhome");
+
             return new  ModelAndView(model,layout);
         },new VelocityTemplateEngine());
 
         post("/customer",(request,response)->{
             Map<String,Object> model = new HashMap<String,Object>();
 
-            String fname = request.queryParams("fname");
-            hairdp.setFname(fname);
-            String sname = request.queryParams("sname");
-            hairdp.setSname(sname);
-            String lname = request.queryParams("lname");
-            hairdp.setLname(lname);
-            Integer mobile = Integer.parseInt (request.queryParams("mobile"));
-            hairdp.setMobile(mobile);
-            String gender = request.queryParams("gender");
-            hairdp.setGender(gender);
-            String email = request.queryParams("email");
-            hairdp.setEmail(email);
-            String customerid = request.queryParams("clientid");
-            hairdp.setCustomerid(customerid);
-            String stylistid = request.queryParams("stylistid");
-            hairdp.setStylistid(stylistid);
+             String fname = request.queryParams("fname");
+             hairdp.setFname(fname);
+             String sname = request.queryParams("sname");
+             hairdp.setSname(sname);
+             String lname = request.queryParams("lname");
+             hairdp.setLname(lname);
+             Integer mobile = Integer.parseInt(request.queryParams("mobile"));
+             hairdp.setMobile(mobile);
+             String gender = request.queryParams("gender");
+             hairdp.setGender(gender);
+             String email = request.queryParams("email");
+             hairdp.setEmail(email);
+             String customerid = request.queryParams("clientid");
+             hairdp.setCustomerid(customerid);
+             String stylistid = request.queryParams("stylistid");
+             hairdp.setStylistid(stylistid);
 
-            hb.savecustomer(hairdp);
-            response.redirect("/backhome");
-            return new  ModelAndView(model,layout);
+             hb.savecustomer(hairdp);
+             response.redirect("/backhome");
+
+         return new  ModelAndView(model,layout);
         },new VelocityTemplateEngine());
 
         get("/viewstylist",(request,response)->{
@@ -173,7 +175,7 @@ public class Salon {
             hairdp.setPassword(Arrays.toString(pass));
             String df = HairSalonDB.select(hairdp);
             try{
-                if (df == null) {
+                if (df.equals(stylistid)) {
                     hb.updatestylist(hairdp);
                 }else{
                     model.put("template","/templates/notexist.vtl");
@@ -181,6 +183,7 @@ public class Salon {
 
                 response.redirect("/update");
             }catch(Exception e){
+                model.put("template","/templates/notexist.vtl");
                 System.out.println(e.getMessage());
             }
             return new ModelAndView(model,layout);
@@ -200,7 +203,7 @@ public class Salon {
             hairdp.setStylistid(stylistid);
             String df = HairSalonDB.selectcustomer(hairdp);
             try{
-                if (df == null) {
+                if (df.equals(clientid)) {
                     hb.updateclient(hairdp);
                 }else{
                     model.put("template","/templates/notexist.vtl");
@@ -210,6 +213,7 @@ public class Salon {
                 response.redirect("/update");
             }catch(Exception e){
                 System.out.println(e.getMessage());
+                model.put("template","/templates/notexist.vtl");
             }
             return new ModelAndView(model,layout);
         }, new VelocityTemplateEngine());
@@ -240,7 +244,6 @@ public class Salon {
                     response.redirect("/backhome");
                 } else{
                     model.put("template","/templates/delnot.vtl");
-                    System.out.println(HairSalonDB.select(hairdp));
                 }
 
             }catch(Exception e){

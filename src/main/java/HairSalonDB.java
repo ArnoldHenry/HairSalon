@@ -87,7 +87,7 @@ public class HairSalonDB {
     //confirm customer id
     public static String selectcustomer(HairSalonDP idcheck) {
         try(Connection con = DB.sql2oHair.open()) {
-            String sql = "SELECT customer FROM customer WHERE customerid=:customerid";
+            String sql = "SELECT customerid FROM customer WHERE customerid=:customerid";
             String idcustomer = con.createQuery(sql)
                     .addParameter("customerid",idcheck.getCustomerid())
                     .executeScalar(String.class);
