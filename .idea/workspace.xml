@@ -2,51 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9c04ba9-c5ad-4182-9d1f-d68372448ecd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/file-changes/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/fileContent/annotation-processors.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/taskHistory/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/taskHistory/fileSnapshots.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/taskHistory/jvmClassSignatures.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.4.1/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/built.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcsWorkingDirs/gc.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HairSalonDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HairSalonDP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Salon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VelocityTemplateEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/customer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/hairsalon.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/img/hair.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/img/towel.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/stylist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/caution.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customers.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/delnot.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginval.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/notexist.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/records.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stylistpage.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stylistregform.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/updatefile.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userexists.vtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HairSalonTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -75,6 +31,7 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="css" value="2" />
+          <entry key="gitignore" value="1" />
           <entry key="gradle" value="1" />
           <entry key="ignore" value="1" />
           <entry key="java" value="11" />
@@ -87,11 +44,12 @@
           <entry key="CSS" value="2" />
           <entry key="Groovy" value="1" />
           <entry key="JAVA" value="11" />
-          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="PLAIN_TEXT" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="gitignore" value="94" />
           <entry key="gradle" value="22" />
           <entry key="ignore" value="75" />
           <entry key="java" value="3074" />
@@ -102,7 +60,7 @@
         <counts>
           <entry key="Groovy" value="22" />
           <entry key="JAVA" value="3074" />
-          <entry key="PLAIN_TEXT" value="373" />
+          <entry key="PLAIN_TEXT" value="467" />
         </counts>
       </usages-collector>
     </session>
@@ -110,10 +68,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.ignore">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="300">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -480,13 +438,15 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/stylistregform.vtl" />
         <option value="$PROJECT_DIR$/.ignore" />
         <option value="$PROJECT_DIR$/src/main/java/DB.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="1366" />
-    <option name="height" value="741" />
+    <option name="x" value="167" />
+    <option name="y" value="137" />
+    <option name="width" value="1356" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -532,7 +492,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539981050997" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539981394355" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/HairSalon" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -672,7 +633,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.74049586" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.38347107" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.3272727" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3289256" />
@@ -883,6 +844,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
