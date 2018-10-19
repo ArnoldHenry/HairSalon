@@ -35,6 +35,9 @@
         <div class="form-group">
             <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address"/>
         </div>
+          <div class="form-group">
+             <input name="password" style="width:100%;" class="form-control" type="password" id="password" placeholder="Enter Passsword"/>
+          </div>
     <div class="form-group">
         <button type="submit" name="submit" class="btn btn-success">Register Stylist</button>
     </div>
@@ -64,18 +67,16 @@
         <div class="form-group">
             <input name="email" style="width:100%;" class="form-control" type="email" id="email" placeholder="Enter Email Address"/>
         </div>
-            <div class="form-group">
-                <input name="stylistid" style="width:100%;" class="form-control" type="text" id="stylistid" placeholder="Enter Stylist ID"/>
-            </div>
          <div class="form-group">
           <label for="sel1">Select Stylist</label>
-          <select class="form-control" name="customerid" id="customerid" id="sel1">
+          <select class="form-control" name="stylistid" id="stylistid">
             <option value="">Select Stylist</option>
            #foreach ($styl in $stylists)
            <option value="$styl.getStylistid()">$styl.getFname()&nbsp$styl.getSname() </td>
            #end
           </select>
            </div>
+
         <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-success">Register Customer</button>
         </div>

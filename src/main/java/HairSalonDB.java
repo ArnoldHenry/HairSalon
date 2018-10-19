@@ -65,6 +65,15 @@ public class HairSalonDB {
             return con.createQuery(sql).executeAndFetch(HairSalonDP.class);
         }
     }
+    //view stylist customers
+    public static List<HairSalonDP> stylistcustomers(HairSalonDP dp){
+        String sql = "SELECT  fname, sname, lname, mobile, gender, email,customerid FROM customer WHERE stylistid=:stylistid";
+        try(Connection con = DB.sql2oHair.open()) {
+            return con.createQuery(sql)
+                    .addParameter("stylistid",dp.getStylistid())
+                    .executeAndFetch(HairSalonDP.class);
+        }
+    }
     //confirm stylist id
     public static String select(HairSalonDP idcheck) {
         try(Connection con = DB.sql2oHair.open()) {
@@ -99,9 +108,9 @@ public class HairSalonDB {
     //validate stylist login
     public static String stylistval(HairSalonDP stylistcheck) {
         try(Connection con = DB.sql2oHair.open()) {
-            String sql = "SELECT uname,password FROM stylist WHERE uname=:uname AND password=:passw";
+            String sql = "SELECT stylistid,password FROM stylist WHERE stylistid=:stylistid AND password=:passw";
             String loginval = con.createQuery(sql)
-                    .addParameter("uname",stylistcheck.getUname())
+                    .addParameter("stylistid",stylistcheck.getStylistid())
                     .addParameter("passw",stylistcheck.getPassword())
                     .executeScalar(String.class);
             return loginval;
@@ -123,8 +132,8 @@ public class HairSalonDB {
 //save stylist credentials
     public void savestylist(HairSalonDP stylist) {
         try (Connection connection = DB.sql2oHair.open()) {
-            String newdata = "INSERT INTO stylist(stylistid,fname,sname,lname,mobile,gender,email)" +
-                    "VALUES(:stylistid,:fname,:sname,:lname,:mobile,:gender,:email)";
+            String newdata = "INSERT INTO stylist(stylistid,fname,sname,lname,mobile,gender,email,password)" +
+                    "VALUES(:stylistid,:fname,:sname,:lname,:mobile,:gender,:email,:password)";
             connection.createQuery(newdata)
                     .addParameter("stylistid", stylist.getStylistid())
                     .addParameter("fname", stylist.getFname())
@@ -133,6 +142,7 @@ public class HairSalonDB {
                     .addParameter("mobile", stylist.getMobile())
                     .addParameter("gender", stylist.getGender())
                     .addParameter("email", stylist.getEmail())
+                    .addParameter("password", stylist.getPassword())
                     .executeUpdate();
         }
     }
