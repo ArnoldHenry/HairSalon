@@ -96,6 +96,17 @@ public class HairSalonDB {
             return loginval;
         }
     }
+    //validate stylist login
+    public static String stylistval(HairSalonDP stylistcheck) {
+        try(Connection con = DB.sql2oHair.open()) {
+            String sql = "SELECT uname,password FROM stylist WHERE uname=:uname AND password=:passw";
+            String loginval = con.createQuery(sql)
+                    .addParameter("uname",stylistcheck.getUname())
+                    .addParameter("passw",stylistcheck.getPassword())
+                    .executeScalar(String.class);
+            return loginval;
+        }
+    }
 
 
     //save admin credentials

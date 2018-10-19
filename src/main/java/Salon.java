@@ -51,9 +51,12 @@ public class Salon {
             byte[] pass = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             hairdp.setPassword(Arrays.toString(pass));
 //            hb.save(hairdp);
-            String confirm = HairSalonDB.adminval(hairdp);
-            if (confirm != null){
+            String confirmadmin = HairSalonDB.adminval(hairdp);
+            String confirmstylist = HairSalonDB.stylistval(hairdp);
+            if (confirmadmin != null){
                 model.put("template","/templates/stylistregform.vtl");
+            }else if(confirmstylist != null){
+                model.put("template","/templates/stylistpage.vtl");
             }else{
                 model.put("template","/templates/caution.vtl");
             }
@@ -78,6 +81,10 @@ public class Salon {
             String gender = request.queryParams("gender");
             hairdp.setGender(gender);
             String email = request.queryParams("email");
+            hairdp.setEmail(email);
+            String uname = request.queryParams("uname");
+            hairdp.setEmail(uname);
+            String password = request.queryParams("email");
             hairdp.setEmail(email);
 
             hb.savestylist(hairdp);
