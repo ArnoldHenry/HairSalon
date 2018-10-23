@@ -7,7 +7,7 @@ This is a Salon application.
 * Stylist are also able to view there customers assigned to them by the admin.
 ## Setup/Installation Requirements
 No installation needed just click the link below to view my website online
-[Salon](https://salon25.herokuapp.com/)
+[Salon](https://salon254.herokuapp.com/)
 ## Known Bugs
 No bugs
 ## Technologies Used
